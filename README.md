@@ -1,1 +1,0 @@
-# chat-services-osmo-mitra
