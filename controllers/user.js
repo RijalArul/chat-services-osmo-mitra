@@ -102,7 +102,7 @@ class UserController {
     }
   }
 
-  static async get_user (req, res) {
+  static async get_user (req, res, next) {
     try {
       const { user_id } = req.params
       const user = await User.findOne({
@@ -113,9 +113,10 @@ class UserController {
         user: user
       })
     } catch (err) {
-      res.status(500).json({
-        message: 'Internal Server Error'
-      })
+      next()
+      // res.status(500).json({
+      //   message: 'Internal Server Error'
+      // })
     }
   }
 }
