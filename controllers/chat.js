@@ -88,7 +88,7 @@ class ChatController {
 
       try {
         const groupChat = await Chat.create({
-          chatName: req.body.name,
+          chatName: `${user.province_name} group`,
           users: users,
           isGroupChat: true,
           groupAdmin: user
@@ -125,7 +125,9 @@ class ChatController {
 
       res.send(chat)
     } catch (err) {
-      console.log(err)
+      res.status(500).json({
+        message: 'Internal Server Error'
+      })
     }
   }
 
